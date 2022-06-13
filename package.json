@@ -14,12 +14,15 @@
     "@babel/preset-react": "^7.17.12",
     "@emotion/babel-plugin": "^11.9.2",
     "@emotion/react": "^11.9.0",
-    "@tauri-apps/api": "1.0.0-rc.6",
+    "@react-spectrum/provider": "^3.4.0",
+    "@spectrum-icons/workflow": "^4.0.0",
+    "framer-motion": "^6.3.11",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "vite-plugin-babel-macros": "^1.0.6"
   },
   "devDependencies": {
+    "@tauri-apps/api": "1.0.0-rc.6",
     "@tauri-apps/cli": "1.0.0-rc.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
