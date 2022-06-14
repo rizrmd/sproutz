@@ -38,7 +38,6 @@ export const initApp = (app: IApp) => {
     if (!app.cmd) {
       app.cmd = Command.sidecar('go/main')
       app.cmd.stdout.on('data', async (data: string) => {
-        console.log('go:' + data)
         if (data.startsWith('listening on')) {
           app.status = 'Ready'
           app.render()

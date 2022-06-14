@@ -8,6 +8,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"strings"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/tidwall/gjson"
@@ -29,6 +30,12 @@ func (h *spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	if info, err := os.Stat(p); err != nil {
 		if h.indexNotFound == "" {
+			if !strings.Contains(r.Header.Get("accept"), "*") && !strings.Contains(r.Header.Get("accept"), "html") {
+				w.WriteHeader(http.StatusNotFound)
+				w.Write([]byte(h.indexNotFound))
+				return
+			}
+
 			http.ServeFile(w, r, filepath.Join(h.publicDir, h.indexFile))
 		} else {
 			w.Header().Set("Content-Type", "text/html")
